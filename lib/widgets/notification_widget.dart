@@ -54,6 +54,7 @@ class NotificationWidget extends StatelessWidget {
                   elevation: 0,
                   color: Colors.grey.shade900.withOpacity(0.8),
                   child: ExpandableText(
+                    index: index,
                     image: notifications[index]['icon'],
                     text: notifications[index]['text'],
                   ),

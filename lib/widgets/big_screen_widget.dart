@@ -1,8 +1,6 @@
+import 'package:demoapp/widgets/home_panel.dart';
 import 'package:flutter/material.dart';
-
-import 'big_screen_score_widget.dart';
 import 'logo_widget.dart';
-import 'notification_widget.dart';
 import 'web_nav_button.dart';
 
 class BigScreenWidget extends StatefulWidget {
@@ -15,6 +13,7 @@ class BigScreenWidget extends StatefulWidget {
 
 class _BigScreenWidgetState extends State<BigScreenWidget> {
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -60,23 +59,20 @@ class _BigScreenWidgetState extends State<BigScreenWidget> {
         ),
         const VerticalDivider(thickness: 1, width: 2),
         Expanded(
-          child: Container(
-            width: widget.size.width,
-            height: widget.size.height,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/web_background.png'),
-                fit: BoxFit.cover,
+          child: [
+            HomePanel(size: widget.size),
+            const Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Text(
+                  'Settings Screen',
+                  style: TextStyle(fontSize: 25.0),
+                ),
               ),
-            ),
-            child: Row(
-              children: [
-                BigScreenScoreWidget(size: widget.size),
-                NotificationWidget(),
-              ],
-            ),
-          ),
-        )
+            )
+          ][index],
+        ),
       ],
     );
   }

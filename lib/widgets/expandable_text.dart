@@ -1,10 +1,14 @@
+import 'package:demoapp/screens/homepage/notification_cubit/notification_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExpandableText extends StatefulWidget {
+  final int index;
   final String image;
   final String text;
   const ExpandableText({
     Key? key,
+    required this.index,
     required this.image,
     required this.text,
   }) : super(key: key);
@@ -27,6 +31,8 @@ class ExpandableTextState extends State<ExpandableText>
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () =>
+          context.read<NotificationCubit>().showNotification(widget.index),
       minLeadingWidth: 0.0,
       leading: Container(
         decoration: BoxDecoration(
